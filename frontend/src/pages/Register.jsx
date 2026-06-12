@@ -140,7 +140,7 @@ function Register() {
             </form>
 
             <div className="text-center mt-4 text-muted">
-              Already have an account? <Link to="/">Login now</Link>
+              Already have an account? <Link to="/login">Login now</Link>
             </div>
           </div>
         </div>
