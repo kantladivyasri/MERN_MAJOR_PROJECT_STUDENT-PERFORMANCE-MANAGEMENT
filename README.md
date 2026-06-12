@@ -82,4 +82,10 @@ To use the deploy step, add these repository secrets in GitHub:
 - `VERCEL_ORG_ID`
 - `VERCEL_PROJECT_ID`
 
+For backend Heroku deployment (optional):
+
+- `HEROKU_API_KEY` (Heroku account API key)
+- `HEROKU_APP_NAME` (Heroku app name)
+- `HEROKU_EMAIL` (Heroku account email)
+
 Then run the workflow manually from the Actions tab and set `deploy` to `true`.

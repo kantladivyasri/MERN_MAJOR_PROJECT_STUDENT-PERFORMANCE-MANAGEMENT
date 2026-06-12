@@ -1,0 +1,32 @@
+name: Deploy Backend to Heroku
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Set to true to deploy to Heroku when secrets exist'
+        required: false
+        default: 'false'
+
+jobs:
+  deploy:
+    if: ${{ github.event.inputs.deploy == 'true' && secrets.HEROKU_API_KEY != '' && secrets.HEROKU_APP_NAME != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 18
+      - name: Install and build frontend
+        run: |
+          cd frontend
+          npm ci
+          npm run build
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: false
