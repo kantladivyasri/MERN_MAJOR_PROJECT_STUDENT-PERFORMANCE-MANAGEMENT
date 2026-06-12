@@ -1,0 +1,72 @@
+# Smart Learning Placement System
+
+This repository contains a MERN application (Express + MongoDB backend, React frontend) for coursework, job postings, enrollments, submissions, and job applications.
+
+Quick start (development)
+
+1. Backend
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Edit backend/.env and set MONGO_URI and JWT_SECRET
+npm run dev
+```
+
+2. Frontend
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Open the frontend at http://localhost:3000
+
+Deployment options
+
+- Frontend: Vercel / Netlify (set `REACT_APP_API_URL` to your backend API)
+- Backend: Render / Railway / Fly / Heroku (set `MONGO_URI`, `JWT_SECRET` in provider)
+
+Serve frontend from backend (single deploy)
+
+```bash
+cd frontend
+npm run build
+cd ../backend
+# ensure backend serves static from frontend/build (server.js)
+npm start
+```
+
+Docker (local test)
+
+```bash
+# from repo root
+docker-compose up --build
+```
+
+Security notes
+
+- Never commit real secrets in `.env`.
+- If secrets were pushed, rotate credentials immediately and purge git history.
+
+Files added to help deploy:
+
+- `.gitignore` - ignores `node_modules`, build outputs and `.env` files
+- `backend/.env.example` - sample env file
+- `docker-compose.yml` and `backend/Dockerfile` - quick Docker setup for local testing
+
+The repository includes a GitHub Actions workflow at `.github/workflows/ci.yml` that:
+
+- installs backend and frontend dependencies
+- builds the frontend
+- optionally deploys the frontend to Vercel when manually triggered and secrets are configured
+
+To use the deploy step, add these repository secrets in GitHub:
+
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
+
+Then run the workflow manually from the Actions tab and set `deploy` to `true`.
