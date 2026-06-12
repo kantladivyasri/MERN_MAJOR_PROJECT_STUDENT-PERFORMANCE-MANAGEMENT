@@ -9,7 +9,6 @@ try {
 
 const connectDB = async () => {
   const envUri = process.env.MONGO_URI;
-  console.log("DEBUG: process.env.MONGO_URI=" + (envUri ? envUri.substring(0, 120) : "<empty>"));
 
   try {
     if (envUri && (envUri.startsWith("mongodb://") || envUri.startsWith("mongodb+srv://"))) {
