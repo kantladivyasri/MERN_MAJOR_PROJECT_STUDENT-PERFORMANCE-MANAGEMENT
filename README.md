@@ -39,6 +39,19 @@ cd ../backend
 npm start
 ```
 
+Deploy to Heroku
+
+1. Create a new Heroku app.
+2. Set config vars in Heroku:
+   - `MONGO_URI`
+   - `JWT_SECRET`
+3. Push the repo and Heroku will run `npm run build` because of `heroku-postbuild`.
+
+```bash
+heroku git:remote -a your-heroku-app-name
+git push heroku master
+```
+
 Docker (local test)
 
 ```bash

@@ -1,0 +1,11 @@
+{
+  "name": "smart-learning-placement-system",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["frontend", "backend"],
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "build": "npm --prefix frontend run build",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  }
+}

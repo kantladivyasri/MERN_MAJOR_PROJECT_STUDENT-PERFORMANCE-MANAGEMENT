@@ -32,7 +32,7 @@ function ApplyJob() {
     e.preventDefault();
 
     try {
-      const res = await api.post("/job-applications", formData);
+      await api.post("/job-applications", formData);
       setMessage("Job application submitted successfully.");
       setFormData({ job: "" });
     } catch (error) {

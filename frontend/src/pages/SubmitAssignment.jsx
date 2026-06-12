@@ -38,7 +38,7 @@ function SubmitAssignment() {
     e.preventDefault();
 
     try {
-      const res = await api.post("/submissions", formData);
+      await api.post("/submissions", formData);
       setMessage("Assignment submitted successfully.");
       setFormData({ assignment: "", submissionText: "" });
     } catch (error) {
